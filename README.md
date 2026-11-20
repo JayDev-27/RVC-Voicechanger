@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://satiricalguru.github.io/RVC-Voicechanger/">
+<a href="https://jaydev-27.github.io/RVC-Voicechanger/">
   <img src="assets/readme/logo.png" alt="RVC Voicechanger" width="140" />
 </a>
 
@@ -12,14 +12,14 @@ Turn your microphone into any RVC voice model in real time, on your own Mac or P
 Free, open source, and private: your voice never leaves your computer.
 
 <p>
-  <a href="https://github.com/satiricalguru/RVC-Voicechanger/releases/latest"><img src="https://img.shields.io/github/v/release/satiricalguru/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13&label=release" alt="Latest release" /></a>
-  <a href="https://github.com/satiricalguru/RVC-Voicechanger/releases"><img src="https://img.shields.io/github/downloads/satiricalguru/RVC-Voicechanger/total?style=flat-square&color=fffaea&labelColor=0d0d13" alt="Downloads" /></a>
+  <a href="https://github.com/JayDev-27/RVC-Voicechanger/releases/latest"><img src="https://img.shields.io/github/v/release/JayDev-27/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13&label=release" alt="Latest release" /></a>
+  <a href="https://github.com/JayDev-27/RVC-Voicechanger/releases"><img src="https://img.shields.io/github/downloads/JayDev-27/RVC-Voicechanger/total?style=flat-square&color=fffaea&labelColor=0d0d13" alt="Downloads" /></a>
   <img src="https://img.shields.io/badge/macOS%20%C2%B7%20Windows-fffaea?style=flat-square&labelColor=0d0d13&label=platforms" alt="Platforms: macOS and Windows" />
-  <a href="https://github.com/satiricalguru/RVC-Voicechanger/stargazers"><img src="https://img.shields.io/github/stars/satiricalguru/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13" alt="GitHub stars" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/satiricalguru/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13" alt="MIT license" /></a>
+  <a href="https://github.com/JayDev-27/RVC-Voicechanger/stargazers"><img src="https://img.shields.io/github/stars/JayDev-27/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13" alt="GitHub stars" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/JayDev-27/RVC-Voicechanger?style=flat-square&color=fffaea&labelColor=0d0d13" alt="MIT license" /></a>
 </p>
 
-**[Website](https://satiricalguru.github.io/RVC-Voicechanger/)** ·
+**[Website](https://jaydev-27.github.io/RVC-Voicechanger/)** ·
 **[Download](#️-download)** ·
 **[Find voices](#-find-more-voices-on-hugging-face)** ·
 **[Build from source](#️-build-from-source)** ·
@@ -27,11 +27,11 @@ Free, open source, and private: your voice never leaves your computer.
 
 <br/>
 
-<a href="https://satiricalguru.github.io/RVC-Voicechanger/">
+<a href="https://jaydev-27.github.io/RVC-Voicechanger/">
   <img src="assets/readme/demo-voices.gif" alt="Website demo: picking each voice plays its converted sample while the WebGL voice orb changes colour and shape" width="100%" />
 </a>
 
-<sub>Each voice on the website plays a real sample rendered by the app's real-time engine. <a href="https://satiricalguru.github.io/RVC-Voicechanger/">Try it live →</a></sub>
+<sub>Each voice on the website plays a real sample rendered by the app's real-time engine. <a href="https://jaydev-27.github.io/RVC-Voicechanger/">Try it live →</a></sub>
 
 </div>
 
@@ -43,13 +43,13 @@ Free, open source, and private: your voice never leaves your computer.
 
 | Platform | Installer | Requires |
 |:--|:--|:--|
-| **macOS · Apple Silicon** | [`RVC-Voicechanger-1.1.0-mac-arm64.dmg`](https://github.com/satiricalguru/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-mac-arm64.dmg) | macOS 14 Sonoma+ |
-| **macOS · Intel** | [`RVC-Voicechanger-1.1.0-mac-x64.dmg`](https://github.com/satiricalguru/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-mac-x64.dmg) | macOS 13 Ventura+ |
-| **Windows 10 / 11** | [`RVC-Voicechanger-1.1.0-win-x64.exe`](https://github.com/satiricalguru/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-win-x64.exe) | 64-bit |
+| **macOS · Apple Silicon** | [`RVC-Voicechanger-1.1.0-mac-arm64.dmg`](https://github.com/JayDev-27/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-mac-arm64.dmg) | macOS 14 Sonoma+ |
+| **macOS · Intel** | [`RVC-Voicechanger-1.1.0-mac-x64.dmg`](https://github.com/JayDev-27/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-mac-x64.dmg) | macOS 13 Ventura+ |
+| **Windows 10 / 11** | [`RVC-Voicechanger-1.1.0-win-x64.exe`](https://github.com/JayDev-27/RVC-Voicechanger/releases/download/v1.1.0/RVC-Voicechanger-1.1.0-win-x64.exe) | 64-bit |
 
 </div>
 
-The installer includes everything, Python and PyTorch included. On first launch the app downloads about **1.3 GB** of voice and pitch models. Verify your download against [`SHA256SUMS.txt`](https://github.com/satiricalguru/RVC-Voicechanger/releases/latest).
+The installer includes everything, Python and PyTorch included. On first launch the app downloads about **1.3 GB** of voice and pitch models. Verify your download against [`SHA256SUMS.txt`](https://github.com/JayDev-27/RVC-Voicechanger/releases/latest).
 
 > [!NOTE]
 > Builds aren't notarized or signed with a paid certificate yet.
@@ -94,7 +94,7 @@ The installer includes everything, Python and PyTorch included. On first launch 
 
 ## 🌐 The website
 
-The [download page](https://satiricalguru.github.io/RVC-Voicechanger/) is a single HTML file (`site/index.html`) with a Three.js voice orb, GSAP and Lenis scroll choreography, real converted voice samples, live GitHub release data and OS detection.
+The [download page](https://jaydev-27.github.io/RVC-Voicechanger/) is a single HTML file (`site/index.html`) with a Three.js voice orb, GSAP and Lenis scroll choreography, real converted voice samples, live GitHub release data and OS detection.
 
 <div align="center">
   <img src="assets/readme/demo-signal-chain.gif" alt="Scrolling through the signal chain: a raw waveform is cleaned, turned into HuBERT feature cells, coloured into a spectrogram and resolved into the converted voice" width="100%" />
@@ -185,7 +185,7 @@ flowchart LR
 **Prerequisites:** Node.js 20+, pnpm, Python 3.10–3.12, and [uv](https://docs.astral.sh/uv/) for packaging.
 
 ```bash
-git clone https://github.com/satiricalguru/RVC-Voicechanger.git
+git clone https://github.com/JayDev-27/RVC-Voicechanger.git
 cd RVC-Voicechanger
 
 python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -284,11 +284,11 @@ xattr -dr com.apple.quarantine "/Applications/RVC Voicechanger.app"
 
 ## 🤝 Contributing
 
-Issues and pull requests are welcome. Please [open an issue](https://github.com/satiricalguru/RVC-Voicechanger/issues) describing the bug or idea first, include your OS and app version, and keep pull requests focused.
+Issues and pull requests are welcome. Please [open an issue](https://github.com/JayDev-27/RVC-Voicechanger/issues) describing the bug or idea first, include your OS and app version, and keep pull requests focused.
 
 ## 👥 Credits
 
-- **Jatin Pandey** ([@satiricalguru](https://github.com/satiricalguru)): project lead, core developer and UI designer.
+- **Jatin Pandey** ([@satiricalguru](https://github.com/JayDev-27)): project lead, core developer and UI designer.
 - Built on the open-source work of [IAHispano/Applio](https://github.com/IAHispano/Applio), which provided the foundation for the RVC inference code.
 
 <a href="https://github.com/IAHispano/Applio/graphs/contributors">
@@ -302,7 +302,7 @@ Issues and pull requests are welcome. Please [open an issue](https://github.com/
 ---
 
 <div align="center">
-  <sub>If RVC Voicechanger made you sound like someone else, <a href="https://github.com/satiricalguru/RVC-Voicechanger/stargazers">give it a ⭐</a>.</sub>
+  <sub>If RVC Voicechanger made you sound like someone else, <a href="https://github.com/JayDev-27/RVC-Voicechanger/stargazers">give it a ⭐</a>.</sub>
   <br/><br/>
   <a href="#rvc-voicechanger">Back to top ↑</a>
 </div>

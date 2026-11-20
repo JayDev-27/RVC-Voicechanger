@@ -56,7 +56,7 @@ const MODELS_DIR = app.isPackaged
   : path.join(APP_ROOT, 'models');
 
 const MODELS_ZIP_URL =
-  'https://github.com/satiricalguru/RVC-Voicechanger/releases/download/v1.0.0/models.zip';
+  'https://github.com/JayDev-27/RVC-Voicechanger/releases/download/v1.0.0/models.zip';
 const HUBERT_URL =
   'https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt';
 const RMVPE_URL =

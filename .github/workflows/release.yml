@@ -1,0 +1,122 @@
+name: Release
+
+# Builds the desktop app for macOS (Apple Silicon + Intel) and Windows, then
+# publishes the installers to a GitHub Release.
+#   • Push a tag like v1.2.0  → builds and publishes the release
+#   • Run manually            → builds and uploads workflow artifacts only
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS arm64
+            os: macos-14
+            eb_args: --mac --arm64
+          - name: macOS x64
+            os: macos-15-intel
+            eb_args: --mac --x64
+          - name: Windows x64
+            os: windows-latest
+            eb_args: --win --x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Verify tag matches package.json version
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          PKG=$(node -p "require('./package.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$PKG" != "$TAG" ]; then
+            echo "::error::Tag v$TAG does not match package.json version $PKG"; exit 1
+          fi
+
+      - name: Install Electron dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build UI
+        run: |
+          pnpm --dir ui install --frozen-lockfile
+          pnpm --dir ui build
+
+      - name: Bundle Python runtime
+        run: node scripts/bundle-python.mjs
+
+      - name: Package app
+        shell: bash
+        run: npx electron-builder ${{ matrix.eb_args }} --publish never
+
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: installers-${{ matrix.os }}
+          path: |
+            dist/*.dmg
+            dist/*.exe
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    # Publish whatever platforms built successfully (fail-fast is off).
+    if: ${{ !cancelled() && startsWith(github.ref, 'refs/tags/v') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: installers-*
+          merge-multiple: true
+
+      - name: Generate checksums
+        run: |
+          cd dist
+          sha256sum *.dmg *.exe > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NOTES_FILE=$(mktemp)
+          if [ -f "docs/release-notes/${GITHUB_REF_NAME}.md" ]; then
+            cp "docs/release-notes/${GITHUB_REF_NAME}.md" "$NOTES_FILE"
+          else
+            echo "RVC Voicechanger ${GITHUB_REF_NAME}" > "$NOTES_FILE"
+          fi
+          gh release create "$GITHUB_REF_NAME" dist/*.dmg dist/*.exe dist/SHA256SUMS.txt \
+            --title "RVC Voicechanger ${GITHUB_REF_NAME}" \
+            --notes-file "$NOTES_FILE" \
+            --latest
